@@ -31,6 +31,10 @@ const userSchema = new mongoose.Schema({
     phone : {
         type:String,
         required:true
+    },
+    whatssap : {
+        type:String,
+        required:true
     }
 });
 
