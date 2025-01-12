@@ -31,9 +31,32 @@ const userSchema = new mongoose.Schema({
     phone : {
         type:String,
         required:true
+    },
+    profilePicture : {
+        type:String,
+        required:true,
+        default:"https://pixabay.com/vectors/user-remove-icon-person-personal-2935522/"
     }
 });
 
 const User = mongoose.model("user",userSchema);
 
 export default User;
+
+
+//"email": "jane.smith@example.com",
+//"password": "mySecurePass456"
+//"role": "customer"
+
+//"email": "sophia.wilson@example.com",
+//"password": "sophiaAdmin123",
+//"role": "admin"
+
+
+//"email": "liam.brown@example.com",
+//"password": "hashedpassword321",
+//"role": "customer"
+
+//"email": "amelia.davis@example.com",
+//"password": "securehashedadmin456",
+//"role": "admin"
