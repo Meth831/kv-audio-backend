@@ -92,6 +92,7 @@ export async function deleteInquiry(req,res) {
                         message:"You are not authorized to perform this action"
 
                     })
+                    return
                 }
             }
         }else{
@@ -99,6 +100,7 @@ export async function deleteInquiry(req,res) {
                 message:"You are not authorized to perform this action"
 
             })
+            return
         }
     }catch(e){
         res.staus(500).json({
