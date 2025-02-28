@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 
 app.use((req,res,next)=>{
     let token=req.header
-    ("Authorization")
+    ("Authorization");
 
     
     if(token!=null){
@@ -42,7 +42,7 @@ mongoose.connect(mongourl)
 const connection = mongoose.connection
 connection.once("open",() =>{
     console.log("MongoDB connection established successfully")
-})
+});
 
 app.use("/api/users",userRouter);
 app.use("/api/products",productRouter);
@@ -55,4 +55,4 @@ app.use("/api/inquiries",inquiryRouter);
 
 app.listen(3000,()=>{
     console.log("Server is running on port 3000 ")
-})
+});

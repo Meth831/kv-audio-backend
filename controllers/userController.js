@@ -5,12 +5,12 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-export function registerUser(req,res){
+export function registerUser(req, res){
     const data = req.body;
 
-    data.password = bcrypt.hashSync(data.password,10)
+    data.password = bcrypt.hashSync(data.password,10);
 
-    const newUser = new User(data)
+    const newUser = new User(data);
     newUser.save().then(()=>{
         res.json({message: "User registered successfully!"})
     }).catch((error)=>{
@@ -26,9 +26,7 @@ export function loginUser(req,res){
     }).then(
         (user)=>{
             if (user == null){
-                res.status(404).json({error:"User not found"
-
-                });
+                res.status(404).json({error:"User not found"});
             }else{
                 
 

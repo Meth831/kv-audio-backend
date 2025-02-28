@@ -38,6 +38,6 @@ const productSchema = new mongoose .Schema({
         default:["https://pixabay.com/vectors/music-sound-audio-woofer-loud-8425028/"]
     }
 })
-const Product = mongoose.model("Products",productSchema);
+const Product = mongoose.model("Product",productSchema);
 
 export default Product;
