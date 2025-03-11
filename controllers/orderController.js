@@ -1,5 +1,6 @@
 import Order from "../models/order.js";
 import Product from "../models/product.js";
+import { isItAdmin } from "./userController.js";
 
 export async function createOrder(req,res){
     const  data = req.body;
@@ -142,4 +143,38 @@ export async function getQuote(req, res) {
 			message: "Failed to create order",
 		});
 	}
+}
+
+export async function approveOrRejectOrder(req,res){
+    const orderId = req.params.orderId;
+    const status = req.body.status;
+
+    if(isItAdmin(req)){
+        try{
+            const order = await  Order.findOne(
+                {
+                    orderId:orderId
+                }
+            )
+            if(order==null){
+                res.status(404).json({error:"order not found"});
+                return;
+            }
+            await Order.updateOne(
+                {
+                    orderId:orderId
+                },
+                {
+                    status:status
+                }
+            );
+
+            res.json({message:"Order approved/rejected successfully"});
+        }catch(e){
+            res.status(500).json({error:"Failed to get orders"});
+        }
+    }else{
+        res.status(403).json({error:"Unuthorized"});
+    }
+
 }
